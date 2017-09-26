@@ -6,12 +6,12 @@ package game.modal;
 import java.awt.Image;
 
 /**
- * @author shubh
+ * @author shubham
  *the parent sprite it will have the variables and business logic common to all sprite
  */
 public class Sprite {
 	   
-    // all sprite going to have a location on the screen
+    // all sprites going to have a location on the screen
 	private int location_X;
 	private int location_Y;
 	// all sprites are going to have an image
