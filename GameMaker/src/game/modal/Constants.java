@@ -9,11 +9,13 @@ package game.modal;
  */
 public class Constants {
     
-	//speed of the ball
-	public static int MOVEMENT_X = 10;
-	public static int MOVEMENT_Y = 10;
+	//speed of the auto sprite
+	public static int MOVEMENT_AUTO_X = 10;
+	public static int MOVEMENT_AUTO_Y = 10;
 	
-	
+	//speed of command sprite
+	public static int MOVEMENT_CMD_X = 10;
+	public static int MOVEMENT_CMD_Y = 10;
 	
 	//size for paddle sprite
 	public static int PADDLE_HEIGHT = 50;
