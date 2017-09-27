@@ -7,6 +7,15 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.Timer;
+
+import game.controller.AutoCtrl;
+import game.controller.CommandCtrl;
 
 /**
  * @author shubham it will be the view that will capture movement and request
@@ -33,16 +42,73 @@ public class GameView extends Panel {
 	private int commandHeight;
 	private int commandWidth;
 
+	private AutoCtrl autoCtrl;
+	private CommandCtrl commandCtrl;
+	
+	
+
+	public void setCommandCtrl(CommandCtrl commandCtrl) {
+		this.commandCtrl = commandCtrl;
+	}
+
+	public void setAutoCtrl(AutoCtrl autoCtrl) {
+		this.autoCtrl = autoCtrl;
+	}
+
 	// the actual method that will paint the game objects on the screen
 	@Override
 	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
+
 		super.paint(g);
-		
+         this.requestFocus();
 		Graphics2D g2d = (Graphics2D) g;
+
 		g2d.drawImage(commandSpriteImage, commandLocation_X, commandLocation_Y, commandWidth, commandHeight, this);
 		g2d.drawImage(autoSpriteImage, autoLocation_X, autoLocation_Y, autoWidth, autoHeight, this);
+		
 
+	}
+
+	public void display() {
+		repaint();
+		   ActionListener actionListener = new ActionListener() {
+	           
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					autoCtrl.move();
+					   if(autoCtrl.getBound().intersects(commandCtrl.getBound()))
+			            {	
+			            	autoCtrl.collision();}
+				}
+	        };
+	        
+	        Timer timer = new Timer( 500, actionListener );
+	        timer.start();
+	        KeyListener keyListener = new KeyListener() {
+				
+				@Override
+				public void keyTyped(KeyEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void keyReleased(KeyEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void keyPressed(KeyEvent e) {
+				  
+					
+					commandCtrl.move(e);
+					
+				}
+			};
+            this.addKeyListener(keyListener);
+            
+         
 	}
 
 	public int getAutoLocation_X() {

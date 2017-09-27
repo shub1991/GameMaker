@@ -10,8 +10,8 @@ package game.modal;
 public class Constants {
     
 	//speed of the ball
-	public static int MOVEMENT_X = 5;
-	public static int MOVEMENT_Y = 5;
+	public static int MOVEMENT_X = 10;
+	public static int MOVEMENT_Y = 10;
 	
 	
 	

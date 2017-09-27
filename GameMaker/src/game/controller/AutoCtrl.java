@@ -6,12 +6,17 @@ package game.controller;
  *
  */
 
+import java.awt.Rectangle;
+
 import game.modal.AutoSprite;
+import game.modal.Constants;
 import game.view.GameView;
 
 public class AutoCtrl{
 	GameView view;
 	AutoSprite sprite;
+	int location_X;
+	int location_Y;
 
 	public AutoCtrl(GameView view, AutoSprite sprite) {
 		super();
@@ -29,6 +34,27 @@ public class AutoCtrl{
 			
 		
 	}
- 
+	
+   public void move(){
+	 
+	   
+	   location_X = sprite.getLocation_X()+Constants.MOVEMENT_X;
+	   sprite.setLocation_X(location_X);
+	   location_Y = sprite.getLocation_Y()+Constants.MOVEMENT_Y;
+	   sprite.setLocation_Y(location_Y); 
+	   play();
+	   view.repaint();
+	   
+   }
+   
+   public void collision()
+   {
+	   Constants.MOVEMENT_X = - Constants.MOVEMENT_X;
+	   Constants.MOVEMENT_Y = - Constants.MOVEMENT_Y;
+   }
+   
+   public Rectangle getBound() {
+	   return new Rectangle(sprite.getLocation_X(), sprite.getLocation_Y(), sprite.getWidth(), sprite.getHeight());
+   }
 	
 }
