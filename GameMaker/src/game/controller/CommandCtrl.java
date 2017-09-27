@@ -43,26 +43,27 @@ public class CommandCtrl {
     	 int keyCode = keyEvent.getKeyCode();
     	    switch( keyCode ) { 
     	        case KeyEvent.VK_UP:
-    	        	location_Y = sprite.getLocation_Y()-Constants.MOVEMENT_Y;
+    	        	location_Y = sprite.getLocation_Y()-Constants.MOVEMENT_CMD_Y;
     	            sprite.setLocation_Y(location_Y);
     	            play();
     	            break;
     	        case KeyEvent.VK_DOWN:
-    	        	location_Y = sprite.getLocation_Y()+Constants.MOVEMENT_Y;
+    	        	location_Y = sprite.getLocation_Y()+Constants.MOVEMENT_CMD_Y;
     	            sprite.setLocation_Y(location_Y);
     	            play(); 
     	            break;
     	        case KeyEvent.VK_LEFT:
-    	        	location_X = sprite.getLocation_X()-Constants.MOVEMENT_X;
+    	        	location_X = sprite.getLocation_X()-Constants.MOVEMENT_CMD_X;
     	            sprite.setLocation_X(location_X);
     	            play();
     	            break;
     	        case KeyEvent.VK_RIGHT :
-    	        	location_X = sprite.getLocation_X()+Constants.MOVEMENT_X;
+    	        	location_X = sprite.getLocation_X()+Constants.MOVEMENT_CMD_X;
     	            sprite.setLocation_X(location_X);
     	            play();
     	            break;
     	     }
+    	    
     }
     public Rectangle getBound() {
  	   return new Rectangle(sprite.getLocation_X(), sprite.getLocation_Y(), sprite.getWidth(), sprite.getHeight());

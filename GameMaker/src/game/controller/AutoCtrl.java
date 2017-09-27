@@ -38,9 +38,9 @@ public class AutoCtrl{
    public void move(){
 	 
 	   
-	   location_X = sprite.getLocation_X()+Constants.MOVEMENT_X;
+	   location_X = sprite.getLocation_X()+Constants.MOVEMENT_AUTO_X;
 	   sprite.setLocation_X(location_X);
-	   location_Y = sprite.getLocation_Y()+Constants.MOVEMENT_Y;
+	   location_Y = sprite.getLocation_Y()+Constants.MOVEMENT_AUTO_Y;
 	   sprite.setLocation_Y(location_Y); 
 	   play();
 	   view.repaint();
@@ -49,8 +49,8 @@ public class AutoCtrl{
    
    public void collision()
    {
-	   Constants.MOVEMENT_X = - Constants.MOVEMENT_X;
-	   Constants.MOVEMENT_Y = - Constants.MOVEMENT_Y;
+	   Constants.MOVEMENT_AUTO_X = - Constants.MOVEMENT_AUTO_X;
+	   Constants.MOVEMENT_AUTO_Y = - Constants.MOVEMENT_AUTO_Y;
    }
    
    public Rectangle getBound() {
