@@ -12,7 +12,7 @@ import game.modal.AutoSprite;
 import game.modal.Constants;
 import game.view.GameView;
 
-public class AutoCtrl{
+public class AutoCtrl {
 	GameView view;
 	AutoSprite sprite;
 	int location_X;
@@ -25,36 +25,38 @@ public class AutoCtrl{
 	}
 
 	public void play() {
-		
-			view.setAutoSpriteImage(sprite.getSpriteImage());
-			view.setAutoLocation_X(sprite.getLocation_X());
-			view.setAutoLocation_Y(sprite.getLocation_Y());
-			view.setAutoHeight(sprite.getHeight());
-			view.setAutoWidth(sprite.getWidth());
-			
-		
+
+		view.setAutoSpriteImage(sprite.getSpriteImage());
+		view.setAutoLocation_X(sprite.getLocation_X());
+		view.setAutoLocation_Y(sprite.getLocation_Y());
+		view.setAutoHeight(sprite.getHeight());
+		view.setAutoWidth(sprite.getWidth());
+
+	}
+
+	public void move() {
+
+		location_X = sprite.getLocation_X() + Constants.MOVEMENT_AUTO_X;
+		sprite.setLocation_X(location_X);
+		location_Y = sprite.getLocation_Y() + Constants.MOVEMENT_AUTO_Y;
+		sprite.setLocation_Y(location_Y);
+		play();
+		view.repaint();
+
+	}
+
+	public void collision() {
+		// Constants.MOVEMENT_AUTO_X = - Constants.MOVEMENT_AUTO_X;
+		Constants.MOVEMENT_AUTO_Y = -Constants.MOVEMENT_AUTO_Y;
+		//sprite.setLocation_Y(location_Y);
 	}
 	
-   public void move(){
-	 
-	   
-	   location_X = sprite.getLocation_X()+Constants.MOVEMENT_AUTO_X;
-	   sprite.setLocation_X(location_X);
-	   location_Y = sprite.getLocation_Y()+Constants.MOVEMENT_AUTO_Y;
-	   sprite.setLocation_Y(location_Y); 
-	   play();
-	   view.repaint();
-	   
-   }
-   
-   public void collision()
-   {
-	   Constants.MOVEMENT_AUTO_X = - Constants.MOVEMENT_AUTO_X;
-	   Constants.MOVEMENT_AUTO_Y = - Constants.MOVEMENT_AUTO_Y;
-   }
-   
-   public Rectangle getBound() {
-	   return new Rectangle(sprite.getLocation_X(), sprite.getLocation_Y(), sprite.getWidth(), sprite.getHeight());
-   }
+	public void sideCollision() {
+		Constants.MOVEMENT_AUTO_X = -Constants.MOVEMENT_AUTO_X;
+	}
 	
+	public Rectangle getBound() {
+		return new Rectangle(sprite.getLocation_X(), sprite.getLocation_Y(), sprite.getWidth(), sprite.getHeight());
+	}
+
 }
